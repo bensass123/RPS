@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+
+    <h1>RPS!!!!</h1>
+
+    <br><BR>
+
+    <span id = "activeplayer">Please enter R, P, S Player One</span>
+
+    <p>Player 1 plays: <span id="p1"></span></p>
+    <br>
+    <p>Player 2 plays: <span id ="p2"></span></p>
+
+    <br><BR><BR>
+    <p>WINNER IS PLAYER <span id ="win"></span></p>
+
+    <BR>
+    <p>------WINS: <span id="wins"></span></p>
+    <p>------LOSSES: <span id="losses"></span></p>
+	<p>------TIES: <span id="ties"></span></p>
+    <script>
+
+	var wins=0;
+	var losses=0;
+	var ties=0;
+
+	var player1;
+	var player2;
+
+	document.onkeyup = function () {
+
+	player1 = event.key;
+
+
+	var cpuChoice = Math.floor(Math.random() * 3);
+	var rps = ["R","P","S"];
+	player2 = rps[cpuChoice];
+
+
+
+	// var activeplayer = 1;
+
+	
+		
+		document.getElementById("activeplayer").innerHTML = "Thank you, you picked " + player1;
+
+		player1 = player1.toUpperCase();
+
+	if (player1 != null) {
+	    document.getElementById("p1").innerHTML = player1;
+	    document.getElementById("p2").innerHTML = player2;
+	}
+
+
+
+	var winner;
+
+	if ((player1 == "R" || player1 =="S" || player1 =="P") && (player2 == "R" || player2 =="S" || player2 =="P")) {
+
+		if (player1 =="R" && player2=="P"){
+			winner = 2;
+		}
+
+		if (player1 =="P" && player2=="R"){
+			winner = 1;
+		}		
+
+		if (player1 =="P" && player2=="S"){
+			winner = 2;
+		}
+
+		if (player1 =="S" && player2=="P"){
+			winner = 1;
+		}
+
+		if (player1 =="S" && player2=="R"){
+			winner = 2;
+		}
+
+		if (player1 =="R" && player2=="S"){
+			winner = 1;
+
+		}
+
+		if (player1 == player2) {
+ 		winner = "Tie";
+ 		}
+ 	}
+ 	else {
+ 		winner = "Invalid entry/entries. Reload page."
+ 	}
+
+ 	if (winner == 1){
+ 		wins++;
+ 	}
+
+ 	if (winner == 2){
+ 		losses++;
+ 	}
+
+
+ 	if (winner == "Tie"){
+ 		ties++;
+ 	}
+
+
+ 	document.getElementById("wins").innerHTML = wins;
+ 	document.getElementById("losses").innerHTML = losses;
+ 	document.getElementById("ties").innerHTML = ties;
+
+ 	document.getElementById("win").innerHTML = winner;
+
+ 	console.log("player 1 " + player1);
+ 	console.log("player 2 " + player2);
+
+ }
+    </script>
+
+
+  </body>
+
+ </html>
